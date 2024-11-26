@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from datetime import datetime
 import time
-# Define function to get longest and shortest options
+# Defining function to get longest and shortest options
 def get_longest_and_shortest_options(keyword):
     # Initialize WebDriver (ensure you set the correct path to your WebDriver)
     driver = webdriver.Chrome(executable_path=r"C:/Users/Navid\Downloads/chromedriver-win64")
@@ -35,7 +35,7 @@ def get_longest_and_shortest_options(keyword):
     else:
         return None, None
 
-# Define the main function
+# Defining the main function
 def process_excel_and_update(file_path):
     # Get the current day of the week
     current_day = datetime.now().strftime('%A')  # E.g., 'Monday'
@@ -64,15 +64,15 @@ def process_excel_and_update(file_path):
                 "Shortest Option": shortest
             })
     
-    # Write the results back to the Excel file
+    # Writing the results back to the Excel file
     results_df = pd.DataFrame(results)
     with pd.ExcelWriter(file_path, mode='a', engine='openpyxl', if_sheet_exists='replace') as writer:
         results_df.to_excel(writer, sheet_name=f"{current_day}_Results", index=False)
     
     print("Processing complete!")
 
-# Path to your Excel file
+# Path of the Excel file
 file_path = "C:/Users/Navid/Downloads/Script.xlsx"
-# Call the main function
+# Calling the main function
 process_excel_and_update(file_path)
 
